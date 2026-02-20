@@ -1,0 +1,6 @@
+cd Z:\first_date
+flutter clean
+flutter pub get
+flutter emulators --launch Pixel_9_Pro_API_35 --cold
+flutter devices
+flutter run
