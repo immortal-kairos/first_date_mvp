@@ -1,0 +1,26 @@
+[
+  {
+    "id": "user_ella_01",
+    "name": "Ella",
+    "age": 21,
+    "gender": "Female",
+    "interests": ["photography", "coffee", "art"],
+    "bio": "Looking for someone to explore the city with."
+  },
+  {
+    "id": "user_sam_02",
+    "name": "Samantha",
+    "age": 22,
+    "gender": "Female",
+    "interests": ["coding", "night rides", "anime"],
+    "bio": "Dev by day, riding by night. Big fan of high-vibe energy."
+  },
+  {
+    "id": "user_jake_03",
+    "name": "Jake",
+    "age": 23,
+    "gender": "Male",
+    "interests": ["gym", "night rides", "investing"],
+    "bio": "Always grinding."
+  }
+]

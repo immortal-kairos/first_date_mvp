@@ -93,7 +93,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               const SizedBox(height: 16),
               DropdownButtonFormField<String>(
-                value: _selectedGender,
+                initialValue: _selectedGender,
                 items: ['Male', 'Female', 'Other']
                     .map((gender) => DropdownMenuItem(
                           value: gender,

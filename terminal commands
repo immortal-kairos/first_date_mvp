@@ -4,3 +4,11 @@ flutter pub get
 flutter emulators --launch Pixel_9_Pro_API_35 --cold
 flutter devices
 flutter run
+# 1. Go into the backend folder
+cd backend
+
+# 2. Reactivate the virtual environment (crucial!)
+.\venv\Scripts\activate
+
+# 3. Start the server
+uvicorn main:app --reload

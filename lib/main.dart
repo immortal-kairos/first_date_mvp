@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart'; // 👈 THIS WAS MISSING
+import 'package:supabase_flutter/supabase_flutter.dart'; // ⚡ NEW: Supabase import
+
 import 'auth/login_screen.dart';
-import 'features/onboarding/onboarding_screen.dart';
+// ✨ FIX: We import main_navigation here instead of home_screen!
+import 'discovery/main_navigation.dart';
+import 'features/onboarding/onboarding_screen.dart'; 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-
-  // ⚡ SPEED BOOST: Disable bot check for emulators
-  await FirebaseAuth.instance.setSettings(appVerificationDisabledForTesting: true);
+  
+  // ⚡ NEW: Initialize Supabase instead of Firebase
+  await Supabase.initialize(
+    url: 'https://diynsibfbcemkzmzjhqr.supabase.co', // 👈 Paste your Project URL here
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRpeW5zaWJmYmNlbWt6bXpqaHFyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIyMDI5OTgsImV4cCI6MjA4Nzc3ODk5OH0.fCdNpiF_DopYJ4SImkEzY8O3j10P2erO_boaLkeGYY4', // 👈 Paste your Anon Key here
+  );
 
   runApp(const FirstDateApp());
 }
@@ -33,7 +37,7 @@ class FirstDateApp extends StatelessWidget {
 }
 
 final GoRouter _router = GoRouter(
-  initialLocation: '/onboarding', // ⚡ BYPASS: Skip Login, go straight here
+  initialLocation: '/home', // Keeping it on Home for testing the swiper
   routes: [
     GoRoute(
       path: '/login',
@@ -45,20 +49,7 @@ final GoRouter _router = GoRouter(
     ),
     GoRoute(
       path: '/home',
-      builder: (context, state) => const HomeScreen(),
+      builder: (context, state) => const MainNavigation(), // ✨ Uses our new Root Layout!
     ),
   ],
 );
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Discovery")),
-      body: const Center(
-        child: Text("Welcome Home! (Login Successful)"),
-      ),
-    );
-  }
-}
